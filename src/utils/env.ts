@@ -7,11 +7,12 @@ type Extra = typeof Constants & {
 
 const extra = (Constants as Extra).expoConfig?.extra ?? {};
 
-export const SUPABASE_URL: string | undefined = extra.SUPABASE_URL;
+export const SUPABASE_URL: string | undefined =
+  process.env.EXPO_PUBLIC_SUPABASE_URL;
 export const SUPABASE_PUBLISHABLE_KEY: string | undefined =
-  extra.SUPABASE_PUBLISHABLE_KEY;
+  process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 export const SUPABASE_FUNCTIONS_URL: string | undefined =
-  extra.SUPABASE_FUNCTIONS_URL;
+  process.env.EXPO_PUBLIC_SUPABASE_FUNCTIONS_URL;
 
 log("Env", {
   SUPABASE_URL,
