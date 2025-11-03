@@ -2,18 +2,17 @@
 import { fakeDetectFromUri } from "./detectorSimulator"; // adjust path
 import { reportIncident } from "../api/incidents"; // <- your file where reportIncident is exported
 import type { TablesInsert } from "../api/types"; // adjust path
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
  * Simulate detection for a hosted image URL and call your reportIncident function.
  * Returns whatever reportIncident returns (the inserted incident row).
  */
-export async function simulateAndReportFromUrl(
-  url: string,
-  deviceId = "3478ab29-b2be-40fa-b6df-6b157e4d8473"
-) {
+
+export async function simulateAndReportFromUrl(url: string) {
   // deterministic simulation
   const det = fakeDetectFromUri(url);
-
+  const deviceId = (await AsyncStorage.getItem("deviceId")) || "demo-device";
   // Build payload that matches TablesInsert<"incidents">
   // reportIncident() will normalize keys (deviceId vs device_id etc).
   const payload: TablesInsert<"incidents"> = {
