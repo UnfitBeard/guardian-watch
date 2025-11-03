@@ -9,7 +9,7 @@ import {
   Alert,
   StyleSheet,
 } from "react-native";
-import { useRoute, useNavigation, RouteProp } from "@react-navigation/native";
+import { useRoute, useNavigation, RouteProp, NavigationProp } from "@react-navigation/native";
 import { fakeDetectFromUri } from "../utils/detectorSimulator";
 import { simulateAndReportFromUrl } from "../utils/demoHelpers";
 
@@ -23,7 +23,7 @@ type HostedDemoRouteProp = RouteProp<RootStackParamList, "HostedDemo">;
 
 export default function HostedDemoScreen() {
   const route = useRoute<HostedDemoRouteProp>();
-  const nav = useNavigation();
+  const nav = useNavigation<NavigationProp<RootStackParamList>>();
   const imageUrl = route.params?.imageUrl ?? null; // safe access
 
   const [loading, setLoading] = useState(false);

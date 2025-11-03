@@ -5,6 +5,7 @@ import DashboardScreen from "./src/screens/DashboardScreen";
 import ReportIncidentScreen from "./src/screens/ReportIncidentScreen";
 import Launcher from "./src/screens/Launcher";
 import HostedDemoScreen from "./src/screens/HostedDemo";
+import ReportUsage from "./src/screens/ReportUsage";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
         <Tab.Screen name="Pair" component={PairingScreen} />
         <Tab.Screen name="Launcher" component={Launcher} />
         <Tab.Screen name="HostedDemo" component={HostedDemoScreen} />
+        <Tab.Screen name="ReportUsage" component={ReportUsage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
